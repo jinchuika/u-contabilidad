@@ -1,26 +1,37 @@
-.. contasys documentation master file, created by
-   sphinx-quickstart on Sat Sep 30 13:23:19 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+================
+Sistema Contable
+================
 
-Inicio
-======
+Esta es la documentación del proyecto para el área de Análisis, Diseño y desarrollo del seminario de privado.
 
+
+============
+Introducción
+============
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
+   modules/introduccion
 
+===========
+Descripción
+===========
+.. toctree::
+   :maxdepth: 2
 
-Tabla de contenido
-==================
+   modules/descripcion
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+==========
+Requisitos
+==========
+.. toctree::
+   :maxdepth: 2
 
-Modelos en Base de datos
-========================
+   modules/requisitos
+
+===========================
+Modelos de la base de datos
+===========================
 .. toctree::
    :maxdepth: 2
 

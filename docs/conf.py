@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# contasys documentation build configuration file, created by
+# sistema-contable documentation build configuration file, created by
 # sphinx-quickstart on Sat Sep 30 13:23:19 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -34,10 +34,12 @@ django.setup()
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc',
+extensions = [
+    'sphinx.ext.autodoc',
     'sphinx.ext.coverage',
     'sphinx.ext.githubpages',
-    'sphinxcontrib.napoleon']
+    'sphinxcontrib.napoleon',
+    'rinoh.frontend.sphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -55,6 +57,13 @@ master_doc = 'index'
 project = 'Sistema contable'
 copyright = '2017, Luis Carlos Contreras'
 author = 'Luis Carlos Contreras'
+rinoh_documents = [(
+    'index',            # top-level file (index.rst)
+    'sistema-contable',           # output (target.pdf)
+    'Sistema Contable UMG',   # document title
+    'Luis Carlos Contreras')]
+latex_paper_size = 'letterpaper'
+latex_show_urls = 'footnote'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -108,20 +117,19 @@ html_static_path = ['_static']
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-# html_sidebars = {
-#     '**': [
-#         'navigation.html',
-#         'relations.html',  # needs 'show_related': True theme option to display
-#         'searchbox.html',
-#         'donate.html',
-#     ]
-# }
+html_sidebars = {
+    '**': [
+        'globaltoc.html',
+        'relations.html',  # needs 'show_related': True theme option to display
+        'searchbox.html',
+    ]
+}
 
 
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'contasysdoc'
+htmlhelp_basename = 'sistema-contabledoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -129,7 +137,7 @@ htmlhelp_basename = 'contasysdoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
-    # 'papersize': 'letterpaper',
+    'papersize': 'letterpaper',
 
     # The font size ('10pt', '11pt' or '12pt').
     #
@@ -148,7 +156,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'contasys.tex', 'contasys Documentation',
+    (master_doc, 'sistema-contable.tex', 'Documentación del sistema contable',
      'Luis Carlos Contreras', 'manual'),
 ]
 
@@ -158,7 +166,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'contasys', 'contasys Documentation',
+    (master_doc, 'sistema-contable', 'sistema-contable Documentation',
      [author], 1)
 ]
 
@@ -169,8 +177,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'contasys', 'contasys Documentation',
-     author, 'contasys', 'One line description of project.',
+    (master_doc, 'sistema-contable', 'sistema-contable Documentation',
+     author, 'sistema-contable', 'One line description of project.',
      'Miscellaneous'),
 ]
 
