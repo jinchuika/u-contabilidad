@@ -1,0 +1,25 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+<h1>{{ producto }}</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">Cuentas en este producto</h3>
+					<span class="box-tools pull-right">
+						<a href="{% url 'cuenta_add' %}" class="btn btn-info">Nueva</a>
+					</span>
+				</div>
+				<div class="box-body">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

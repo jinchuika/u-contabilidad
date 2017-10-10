@@ -1,0 +1,61 @@
+bancos package
+==============
+
+Subpackages
+-----------
+
+.. toctree::
+
+    bancos.migrations
+
+Submodules
+----------
+
+bancos\.admin module
+--------------------
+
+.. automodule:: bancos.admin
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+bancos\.apps module
+-------------------
+
+.. automodule:: bancos.apps
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+bancos\.models module
+---------------------
+
+.. automodule:: bancos.models
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+bancos\.tests module
+--------------------
+
+.. automodule:: bancos.tests
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+bancos\.views module
+--------------------
+
+.. automodule:: bancos.views
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: bancos
+    :members:
+    :undoc-members:
+    :show-inheritance:

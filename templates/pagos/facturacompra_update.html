@@ -1,0 +1,126 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+<h1>Factura <small>#{{ facturacompra.id }}</small></h1>
+{% endblock content_header %}
+
+{% block content %}
+<section class="invoice">
+	<!-- title row -->
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="page-header">
+				<i class="fa fa-globe"></i> AdminLTE, Inc.
+				<small class="pull-right">Fecha: {{ facturacompra.fecha_emision|date:"d/m/Y" }}</small>
+			</h2>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- info row -->
+	<div class="row invoice-info">
+		<div class="col-sm-8 invoice-col">
+			Proveedor
+			<address>
+				<strong>{{ facturacompra.proveedor }}</strong><br>
+				NIT: {{ facturacompra.proveedor.nit }}<br>
+				Dirección: {{ facturacompra.proveedor.direccion }}<br>
+				Teléfono: {{ facturacompra.proveedor.telefono }}<br>
+			</address>
+		</div>
+		<!-- /.col -->
+		<div class="col-sm-4 invoice-col">
+			<b>Compra #{{ facturacompra.id }}</b><br>
+			<br>
+			<b>Serie:</b> {{ facturacompra.serie|default_if_none:"" }}<br>
+			<b>Número:</b> {{ facturacompra.numero }}<br>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+
+	<!-- Table row -->
+	<div class="row">
+		<div class="col-xs-12 table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Cantidad</th>
+						<th>Producto</th>
+						<th>Cuenta</th>
+						<th>Precio unitario</th>
+						<th>Subtotal</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for detalle in facturacompra.detalles.all %}
+					<tr>
+						<td>{{ detalle.cantidad }}</td>
+						<td>{{ detalle.producto }}</td>
+						<td>{{ detalle.cuenta_contable }}</td>
+						<td>{{ detalle.precio_unitario }}</td>
+						<td>{{ detalle.subtotal }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<!-- /.col -->
+	</div>
+	<!-- /.row -->
+
+	<div class="row">
+		<!-- accepted payments column -->
+		<div class="col-xs-6">
+			<div class="table-responsive">
+				<form action="{% url 'facturadetalle_add' %}" method="post">
+					{% csrf_token %}
+					<table class="table">
+						{{ detalle_form.as_table }}
+						<tr>
+							<td colspan="2" class="pull-right">
+								<input type="submit" class="btn btn-primary" value="Agregar">
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+		<!-- /.col -->
+		<div class="col-xs-6">
+			<p class="lead">Fecha de vencimiento {{ facturacompra.fecha_vencimiento|date:"d/m/Y" }}</p>
+			<div class="table-responsive">
+				<table class="table">
+					<tr>
+						<th style="width:50%">Total:</th>
+						<td>Q {{ facturacompra.total }}</td>
+					</tr>
+					<tr>
+						<th>Pagado:</th>
+						<td>Q {{ facturacompra.pagado }}</td>
+					</tr>
+					<tr>
+						<th>Por pagar:</th>
+						<td>Q {{ facturacompra.saldo }}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.row -->
+
+	<!-- this row will not appear when printing -->
+	<div class="row no-print">
+		<div class="col-xs-12">
+			<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+			<form method="post" action="{% url 'factura_update' pk=facturacompra.id %}">
+				{% csrf_token %}
+				{{ completa_form.as_p }}
+				<button type="submit" class="btn btn-success pull-right" style="margin-right: 5px;">
+					<i class="fa fa-download"></i> Guardar
+				</button>
+			</form>
+		</div>
+	</div>
+</section>
+{% endblock content %}

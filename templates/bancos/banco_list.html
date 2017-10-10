@@ -1,0 +1,45 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+<h1>Listado de bancos</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header">
+					<span class="box-tools">
+						<a href="{% url 'banco_add' %}" class="btn btn-info">Agregar</a>
+					</span>
+				</div>
+				<div class="box-body">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Cuentas</th>
+								<th>Chequeras</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for banco in banco_list %}
+							<tr>
+								<td>
+									<a href="{{ banco.get_absolute_url }}" class="btn btn-block">
+										{{ banco }}
+									</a>
+								</td>
+								<td>{{ banco.cuentas.count }}</td>
+								<td>{{ banco.cantidad_chequeras }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

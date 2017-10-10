@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+	<h1>{{ cuentabanco }}</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Chequeras</h3>
+					<span class="box-tools pull-right">
+						<a href="{% url 'chequera_add' %}" class="btn btn-info">Nueva</a>
+					</span>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Número</th>
+								<th>Emitidos</th>
+								<th>Disponibles</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for chequera in cuentabanco.chequeras.all %}
+							<tr>
+								<td>
+									<a href="{{ chequera.get_absolute_url }}" class="btn btn-block">
+										{{ chequera.numero }}
+									</a>
+								</td>
+								<td>{{ chequera.cheques.count }}</td>
+								<td>{{ chequera.cheques_disponibles }}</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

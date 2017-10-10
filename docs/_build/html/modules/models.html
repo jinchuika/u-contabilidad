@@ -1,0 +1,369 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Modelos de la base de datos &#8212; documentación de Sistema contable - 0.1</title>
+    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="prev" title="Inicio" href="../index.html" /> 
+  </head>
+  <body>
+      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
+          <span>documentación de Sistema contable - 0.1</span></a></h1>
+        <h2 class="heading"><span>Modelos de la base de datos</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Inicio</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="modelos-de-la-base-de-datos">
+<h1>Modelos de la base de datos<a class="headerlink" href="#modelos-de-la-base-de-datos" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="module-bancos.models">
+<span id="bancos"></span><h2>Bancos<a class="headerlink" href="#module-bancos.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="bancos.models.Banco">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Banco</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Banco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Banco para generar cuentas bancarias</p>
+<dl class="attribute">
+<dt id="bancos.models.Banco.activo">
+<code class="descname">activo</code><a class="headerlink" href="#bancos.models.Banco.activo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>bool</em> – Indica que puedan realizarse operaciones</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Banco.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#bancos.models.Banco.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Nombre para identificar al banco</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.Cheque">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Cheque</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Cheque" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cheque para efectuar pagos</p>
+<dl class="attribute">
+<dt id="bancos.models.Cheque.chequera">
+<code class="descname">chequera</code><a class="headerlink" href="#bancos.models.Cheque.chequera" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#bancos.models.Chequera" title="bancos.models.Chequera"><code class="xref py py-class docutils literal"><span class="pre">Chequera</span></code></a> – Chequera que emite el banco</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.fecha">
+<code class="descname">fecha</code><a class="headerlink" href="#bancos.models.Cheque.fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – Fecha en la que se crea el cheque</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.Cheque.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Número de cheque</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.Chequera">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Chequera</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Chequera" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Chequera relacionada a una cuenta bancaria.</p>
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cantidad_cheques">
+<code class="descname">cantidad_cheques</code><a class="headerlink" href="#bancos.models.Chequera.cantidad_cheques" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Cantidad de cheques que puede emitir esta chequera</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cuenta">
+<code class="descname">cuenta</code><a class="headerlink" href="#bancos.models.Chequera.cuenta" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#bancos.models.CuentaBanco" title="bancos.models.CuentaBanco"><code class="xref py py-class docutils literal"><span class="pre">CuentaBanco</span></code></a> – Cuenta bancaria que emite esta chequera <code class="xref py py-class docutils literal"><span class="pre">CuentaBancaria</span></code>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.Chequera.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Número de chequera</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.CuentaBanco">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">CuentaBanco</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.CuentaBanco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Una cuenta bancaria para utilizar en la organización.</p>
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.banco">
+<code class="descname">banco</code><a class="headerlink" href="#bancos.models.CuentaBanco.banco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#bancos.models.Banco" title="bancos.models.Banco"><code class="xref py py-class docutils literal"><span class="pre">Banco</span></code></a> – El banco al que pertenece esta cuenta</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.CuentaBanco.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – El número de cuenta bancaria provisto por el banco.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.tipo">
+<code class="descname">tipo</code><a class="headerlink" href="#bancos.models.CuentaBanco.tipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#bancos.models.CuentaBancoTipo" title="bancos.models.CuentaBancoTipo"><code class="xref py py-class docutils literal"><span class="pre">CuentaBancoTipo</span></code></a> – Tipo de cuenta bancaria</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.titular">
+<code class="descname">titular</code><a class="headerlink" href="#bancos.models.CuentaBanco.titular" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Nombre del titular de la cuenta</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.CuentaBancoTipo">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">CuentaBancoTipo</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.CuentaBancoTipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Tipo de cuenta bancaria. Se usa para diferenciar aquellas
+que no pueden hacer retiros (como las de inversión).</p>
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.puede_retirar">
+<code class="descname">puede_retirar</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.puede_retirar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>bool</em> – Indica si esta cuenta puede hacer retiros o no</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.tipo">
+<code class="descname">tipo</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.tipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – El nombre del tipo de cuenta</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-contabilidad.models">
+<span id="contabilidad"></span><h2>Contabilidad<a class="headerlink" href="#module-contabilidad.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="contabilidad.models.CuentaContable">
+<em class="property">class </em><code class="descclassname">contabilidad.models.</code><code class="descname">CuentaContable</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#contabilidad.models.CuentaContable" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Cuenta para llevar el registro contable del a empresa</p>
+<dl class="attribute">
+<dt id="contabilidad.models.CuentaContable.activo_fijo">
+<code class="descname">activo_fijo</code><a class="headerlink" href="#contabilidad.models.CuentaContable.activo_fijo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>bool</em> – Indica si la cuenta corresponde a un activo fijo</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="contabilidad.models.CuentaContable.depreciacion">
+<code class="descname">depreciacion</code><a class="headerlink" href="#contabilidad.models.CuentaContable.depreciacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>float</em> – Indica el valor de la depreciación en caso de que exista</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="contabilidad.models.CuentaContable.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#contabilidad.models.CuentaContable.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – El nombre de la cuenta</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-inventario.models">
+<span id="inventario"></span><h2>Inventario<a class="headerlink" href="#module-inventario.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="inventario.models.ActivoFijo">
+<em class="property">class </em><code class="descclassname">inventario.models.</code><code class="descname">ActivoFijo</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inventario.models.ActivoFijo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Activo fijo adquirido por la organización que
+puede tener una depreciación cada cierto tiempo.</p>
+<dl class="attribute">
+<dt id="inventario.models.ActivoFijo.depreciacion">
+<code class="descname">depreciacion</code><a class="headerlink" href="#inventario.models.ActivoFijo.depreciacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>models.DecimalField</em> – Depreciación anual del activo</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="inventario.models.ActivoFijo.fecha_registro">
+<code class="descname">fecha_registro</code><a class="headerlink" href="#inventario.models.ActivoFijo.fecha_registro" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>models.DateField</em> – Fecha en la que el activo entra al inventario</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="inventario.models.ActivoFijo.precio">
+<code class="descname">precio</code><a class="headerlink" href="#inventario.models.ActivoFijo.precio" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>models.DecimalField</em> – Precio al que fue adquirido el activo fijo</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="inventario.models.ActivoFijo.producto">
+<code class="descname">producto</code><a class="headerlink" href="#inventario.models.ActivoFijo.producto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#inventario.models.Producto" title="inventario.models.Producto"><code class="xref py py-class docutils literal"><span class="pre">Producto</span></code></a> – Producto adquirido en el inventario</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="inventario.models.Producto">
+<em class="property">class </em><code class="descclassname">inventario.models.</code><code class="descname">Producto</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#inventario.models.Producto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Producto para inventario o para mercadería a la venta</p>
+<dl class="attribute">
+<dt id="inventario.models.Producto.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#inventario.models.Producto.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>models.CharField</em> – Nombre del producto</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-pagos.models">
+<span id="pagos"></span><h2>Pagos<a class="headerlink" href="#module-pagos.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="pagos.models.FacturaCompra">
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">FacturaCompra</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.FacturaCompra" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Factura para registrar una compra de mercadería, inventario o servicio</p>
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompra.fecha_emision">
+<code class="descname">fecha_emision</code><a class="headerlink" href="#pagos.models.FacturaCompra.fecha_emision" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – Fecha en la que se emitió la factura</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompra.fecha_vencimiento">
+<code class="descname">fecha_vencimiento</code><a class="headerlink" href="#pagos.models.FacturaCompra.fecha_vencimiento" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – Fecha en la que debe pagarse la factura</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompra.numero">
+<code class="descname">numero</code><a class="headerlink" href="#pagos.models.FacturaCompra.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Número de factura</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompra.proveedor">
+<code class="descname">proveedor</code><a class="headerlink" href="#pagos.models.FacturaCompra.proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#pagos.models.Proveedor" title="pagos.models.Proveedor"><code class="xref py py-class docutils literal"><span class="pre">Proveedor</span></code></a> – Proveedor del producto</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompra.serie">
+<code class="descname">serie</code><a class="headerlink" href="#pagos.models.FacturaCompra.serie" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Serie de la factura</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pagos.models.FacturaCompraDetalle">
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">FacturaCompraDetalle</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.FacturaCompraDetalle" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Detalle de una factura de compra</p>
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompraDetalle.cantidad">
+<code class="descname">cantidad</code><a class="headerlink" href="#pagos.models.FacturaCompraDetalle.cantidad" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Cantidad de producto comprado</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompraDetalle.cuenta_contable">
+<code class="descname">cuenta_contable</code><a class="headerlink" href="#pagos.models.FacturaCompraDetalle.cuenta_contable" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal"><span class="pre">CuentaContable</span></code> – Cuenta a la cual está relacionada la compra de este producto</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompraDetalle.factura">
+<code class="descname">factura</code><a class="headerlink" href="#pagos.models.FacturaCompraDetalle.factura" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#pagos.models.FacturaCompra" title="pagos.models.FacturaCompra"><code class="xref py py-class docutils literal"><span class="pre">FacturaCompra</span></code></a> – Factura  la que pertenece el detalle</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompraDetalle.precio_unitario">
+<code class="descname">precio_unitario</code><a class="headerlink" href="#pagos.models.FacturaCompraDetalle.precio_unitario" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – Precio unitario del producto</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.FacturaCompraDetalle.producto">
+<code class="descname">producto</code><a class="headerlink" href="#pagos.models.FacturaCompraDetalle.producto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal"><span class="pre">Producto</span></code> – Producto comprado</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pagos.models.Proveedor">
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Proveedor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Proveedor para factura.</p>
+<dl class="attribute">
+<dt id="pagos.models.Proveedor.nit">
+<code class="descname">nit</code><a class="headerlink" href="#pagos.models.Proveedor.nit" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – NIT del proveedor</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.Proveedor.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#pagos.models.Proveedor.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Nombre a mostrar</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.Proveedor.tipo_proveedor">
+<code class="descname">tipo_proveedor</code><a class="headerlink" href="#pagos.models.Proveedor.tipo_proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#pagos.models.TipoProveedor" title="pagos.models.TipoProveedor"><code class="xref py py-class docutils literal"><span class="pre">TipoProveedor</span></code></a> – Tipo de proveedor</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="pagos.models.TipoProveedor">
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">TipoProveedor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.TipoProveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Indica si un proveedor es persona individual, empresa, etc.</p>
+<dl class="attribute">
+<dt id="pagos.models.TipoProveedor.tipo_proveedor">
+<code class="descname">tipo_proveedor</code><a class="headerlink" href="#pagos.models.TipoProveedor.tipo_proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Nombre a mostrar</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="../index.html">Inicio</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contenidos</a>
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Derechos de autor 2017, Luis Carlos Contreras.
+      Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.4.
+    </div>
+  </body>
+</html>

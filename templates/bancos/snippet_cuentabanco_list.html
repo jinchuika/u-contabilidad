@@ -1,0 +1,28 @@
+<table class="table table-hover">
+	<thead>
+		<tr>
+			{% if mostrar_banco is True %}
+			<th>Banco</th>
+			{% endif %}
+			<th>Número</th>
+			<th>Tipo</th>
+			<th>Saldo</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for cuenta in cuentabanco_list %}
+		<tr>
+			{% if mostrar_banco is True %}
+			<td>
+				<a href="{{ cuenta.banco.get_absolute_url }}" class="btn btn-block">{{ cuenta.banco }}</a>
+			</td>
+			{% endif %}
+			<td>
+				<a href="{{ cuenta.get_absolute_url }}" class="btn btn-block">{{ cuenta.numero }}</a>
+			</td>
+			<td>{{ cuenta.tipo }}</td>
+			<td>{{ cuenta.saldo }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

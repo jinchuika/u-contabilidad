@@ -1,0 +1,38 @@
+conta package
+=============
+
+Submodules
+----------
+
+conta\.settings module
+----------------------
+
+.. automodule:: conta.settings
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+conta\.urls module
+------------------
+
+.. automodule:: conta.urls
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+conta\.wsgi module
+------------------
+
+.. automodule:: conta.wsgi
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: conta
+    :members:
+    :undoc-members:
+    :show-inheritance:

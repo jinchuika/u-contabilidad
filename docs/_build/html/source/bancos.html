@@ -1,0 +1,601 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>bancos package &#8212; documentación de contasys - 0.1</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="bancos-package">
+<h1>bancos package<a class="headerlink" href="#bancos-package" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-bancos.admin">
+<span id="bancos-admin-module"></span><h2>bancos.admin module<a class="headerlink" href="#module-bancos.admin" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-bancos.apps">
+<span id="bancos-apps-module"></span><h2>bancos.apps module<a class="headerlink" href="#module-bancos.apps" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="bancos.apps.BancosConfig">
+<em class="property">class </em><code class="descclassname">bancos.apps.</code><code class="descname">BancosConfig</code><span class="sig-paren">(</span><em>app_name</em>, <em>app_module</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.apps.BancosConfig" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="attribute">
+<dt id="bancos.apps.BancosConfig.name">
+<code class="descname">name</code><em class="property"> = 'bancos'</em><a class="headerlink" href="#bancos.apps.BancosConfig.name" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bancos.models">
+<span id="bancos-models-module"></span><h2>bancos.models module<a class="headerlink" href="#module-bancos.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<dl class="class">
+<dt id="bancos.models.Banco">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Banco</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Banco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Banco para generar cuentas</p>
+<dl class="attribute">
+<dt id="bancos.models.Banco.activo">
+<code class="descname">activo</code><a class="headerlink" href="#bancos.models.Banco.activo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>BooleanField</em> – Indica que puedan realizarse operaciones</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Banco.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#bancos.models.Banco.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>CharField</em> – Nombre para identificar al banco</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.Banco.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#bancos.models.Banco.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.Banco.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#bancos.models.Banco.MultipleObjectsReturned" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">activo</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Banco.cuentabanco_set">
+<code class="descname">cuentabanco_set</code><a class="headerlink" href="#bancos.models.Banco.cuentabanco_set" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">parent.children</span></code> is a <code class="docutils literal"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Banco.id">
+<code class="descname">id</code><a class="headerlink" href="#bancos.models.Banco.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">nombre</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Banco.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#bancos.models.Banco.objects" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.Cheque">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Cheque</code><span class="sig-paren">(</span><em>id</em>, <em>chequera</em>, <em>numero</em>, <em>fecha</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Cheque" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<dl class="exception">
+<dt id="bancos.models.Cheque.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#bancos.models.Cheque.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.Cheque.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#bancos.models.Cheque.MultipleObjectsReturned" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.chequera">
+<code class="descname">chequera</code><a class="headerlink" href="#bancos.models.Cheque.chequera" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">child.parent</span></code> is a <code class="docutils literal"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.chequera_id">
+<code class="descname">chequera_id</code><a class="headerlink" href="#bancos.models.Cheque.chequera_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.fecha">
+<code class="descname">fecha</code><a class="headerlink" href="#bancos.models.Cheque.fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="bancos.models.Cheque.get_next_by_fecha">
+<code class="descname">get_next_by_fecha</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Cheque.get_next_by_fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="bancos.models.Cheque.get_previous_by_fecha">
+<code class="descname">get_previous_by_fecha</code><span class="sig-paren">(</span><em>*moreargs</em>, <em>**morekwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Cheque.get_previous_by_fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.id">
+<code class="descname">id</code><a class="headerlink" href="#bancos.models.Cheque.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.Cheque.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#bancos.models.Cheque.objects" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.Chequera">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">Chequera</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.Chequera" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Chequera relacionada a una cuenta bancaria.</p>
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cantidad_cheques">
+<code class="descname">cantidad_cheques</code><a class="headerlink" href="#bancos.models.Chequera.cantidad_cheques" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>IntegerField</em> – Cantidad de cheques</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">que puede emitir esta chequera</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cuenta">
+<code class="descname">cuenta</code><a class="headerlink" href="#bancos.models.Chequera.cuenta" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>ForeignKey</em> – Cuenta bancaria que emite</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">esta chequera.</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.Chequera.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>IntegerField</em> – Número de chequera</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.Chequera.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#bancos.models.Chequera.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.Chequera.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#bancos.models.Chequera.MultipleObjectsReturned" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">cantidad_cheques</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cheque_set">
+<code class="descname">cheque_set</code><a class="headerlink" href="#bancos.models.Chequera.cheque_set" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">parent.children</span></code> is a <code class="docutils literal"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">cuenta</code></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">child.parent</span></code> is a <code class="docutils literal"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.cuenta_id">
+<code class="descname">cuenta_id</code><a class="headerlink" href="#bancos.models.Chequera.cuenta_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.id">
+<code class="descname">id</code><a class="headerlink" href="#bancos.models.Chequera.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">numero</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Chequera.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#bancos.models.Chequera.objects" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.CuentaBanco">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">CuentaBanco</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.CuentaBanco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Una cuenta bancaria para utilizar en la organización.</p>
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.banco">
+<code class="descname">banco</code><a class="headerlink" href="#bancos.models.CuentaBanco.banco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>ForeignKey</em> – El banco al que pertenece esta cuenta</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.numero">
+<code class="descname">numero</code><a class="headerlink" href="#bancos.models.CuentaBanco.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>CharField</em> – El número de cuenta bancaria provisto</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">por el banco.</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.tipo">
+<code class="descname">tipo</code><a class="headerlink" href="#bancos.models.CuentaBanco.tipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>ForeignKey</em> – Tipo de cuenta bancaria</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.titular">
+<code class="descname">titular</code><a class="headerlink" href="#bancos.models.CuentaBanco.titular" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>CharField</em> – Nombre del titular de la cuenta</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.CuentaBanco.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#bancos.models.CuentaBanco.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.CuentaBanco.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#bancos.models.CuentaBanco.MultipleObjectsReturned" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">banco</code></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">child.parent</span></code> is a <code class="docutils literal"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.banco_id">
+<code class="descname">banco_id</code><a class="headerlink" href="#bancos.models.CuentaBanco.banco_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.chequera_set">
+<code class="descname">chequera_set</code><a class="headerlink" href="#bancos.models.CuentaBanco.chequera_set" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">parent.children</span></code> is a <code class="docutils literal"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.id">
+<code class="descname">id</code><a class="headerlink" href="#bancos.models.CuentaBanco.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">numero</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#bancos.models.CuentaBanco.objects" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tipo</code></dt>
+<dd><p>Accessor to the related object on the forward side of a many-to-one or
+one-to-one (via ForwardOneToOneDescriptor subclass) relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">child.parent</span></code> is a <code class="docutils literal"><span class="pre">ForwardManyToOneDescriptor</span></code> instance.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBanco.tipo_id">
+<code class="descname">tipo_id</code><a class="headerlink" href="#bancos.models.CuentaBanco.tipo_id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">titular</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.CuentaBancoTipo">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">CuentaBancoTipo</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.CuentaBancoTipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.db.models.base.Model</span></code></p>
+<p>Tipo de cuenta bancaria. Se usa para diferencias aquellas
+que no pueden hacer retiros (como las de inversión).</p>
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.puede_retirar">
+<code class="descname">puede_retirar</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.puede_retirar" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>BooleanField</em> – Indica si esta cuenta puede hacer</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">retiros o no</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.tipo">
+<code class="descname">tipo</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.tipo" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>CharField</em> – El nombre del tipo de cuenta</p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.CuentaBancoTipo.DoesNotExist">
+<em class="property">exception </em><code class="descname">DoesNotExist</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.DoesNotExist" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="exception">
+<dt id="bancos.models.CuentaBancoTipo.MultipleObjectsReturned">
+<em class="property">exception </em><code class="descname">MultipleObjectsReturned</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.MultipleObjectsReturned" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">django.core.exceptions.MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.cuentabanco_set">
+<code class="descname">cuentabanco_set</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.cuentabanco_set" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Accessor to the related objects manager on the reverse side of a
+many-to-one relation.</p>
+<p>In the example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">parent</span> <span class="o">=</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="n">Parent</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="s1">&#39;children&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">parent.children</span></code> is a <code class="docutils literal"><span class="pre">ReverseManyToOneDescriptor</span></code> instance.</p>
+<p>Most of the implementation is delegated to a dynamically defined manager
+class built by <code class="docutils literal"><span class="pre">create_forward_many_to_many_manager()</span></code> defined below.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.id">
+<code class="descname">id</code><a class="headerlink" href="#bancos.models.CuentaBancoTipo.id" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.CuentaBancoTipo.objects">
+<code class="descname">objects</code><em class="property"> = &lt;django.db.models.manager.Manager object&gt;</em><a class="headerlink" href="#bancos.models.CuentaBancoTipo.objects" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">puede_retirar</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">tipo</code></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-bancos.tests">
+<span id="bancos-tests-module"></span><h2>bancos.tests module<a class="headerlink" href="#module-bancos.tests" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-bancos.views">
+<span id="bancos-views-module"></span><h2>bancos.views module<a class="headerlink" href="#module-bancos.views" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-bancos">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-bancos" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">contasys</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navegación</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules/models.html">Models</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir a" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Luis Carlos Contreras.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/source/bancos.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

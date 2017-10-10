@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+<h1>Listado de Cuentas contables</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-header">
+					<span class="box-tools pull-right">
+						<a href="{% url 'cuentacontable_add' %}" class="btn btn-info">
+							Agregar
+						</a>
+					</span>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Depreciación</th>
+								<th>Es activo fijo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cuentacontable in cuentacontable_list %}
+							<tr>
+								<td>
+									<a href="{{ cuentacontable.get_absolute_url }}" class="btn btn-block">{{ cuentacontable }}</a>
+								</td>
+								<td>{{ cuentacontable.depreciacion }}</td>
+								<td>
+									{% if cuentacontable.activo_fijo %}
+										Sí
+									{% else %}
+										No
+									{% endif %}
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

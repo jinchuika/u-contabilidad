@@ -1,0 +1,19 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+	<h1>Listado de cuentas bancarias</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box">
+				<div class="box-body">
+					{% include "bancos/snippet_cuentabanco_list.html" with mostrar_banco=True %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}
