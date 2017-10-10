@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Modelos de la base de datos &#8212; documentación de Sistema contable - 0.1</title>
-    <link rel="stylesheet" href="../_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -27,22 +27,27 @@
     <link rel="prev" title="Inicio" href="../index.html" /> 
   </head>
   <body>
-      <div class="header" role="banner"><h1 class="heading"><a href="../index.html">
-          <span>documentación de Sistema contable - 0.1</span></a></h1>
-        <h2 class="heading"><span>Modelos de la base de datos</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="../index.html">Inicio</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contenidos</a>
-        </p>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             accesskey="I">índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Inicio"
+             accesskey="P">anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Sistema contable - 0.1</a> &#187;</li> 
+      </ul>
+    </div>  
 
-      </div>
-      <div class="content">
-        
-        
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
   <div class="section" id="modelos-de-la-base-de-datos">
 <h1>Modelos de la base de datos<a class="headerlink" href="#modelos-de-la-base-de-datos" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="section" id="module-bancos.models">
@@ -161,6 +166,11 @@ que no pueden hacer retiros (como las de inversión).</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="class">
+<dt id="bancos.models.DepositoBanco">
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">DepositoBanco</code><span class="sig-paren">(</span><em>id</em>, <em>cuenta</em>, <em>fecha</em>, <em>monto</em>, <em>comentario</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.DepositoBanco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-contabilidad.models">
@@ -311,6 +321,11 @@ puede tener una depreciación cada cierto tiempo.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="pagos.models.Pago">
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Pago</code><span class="sig-paren">(</span><em>id</em>, <em>factura</em>, <em>cheque</em>, <em>fecha</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Pago" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="class">
 <dt id="pagos.models.Proveedor">
 <em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Proveedor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Proveedor para factura.</p>
@@ -350,17 +365,61 @@ puede tener una depreciación cada cierto tiempo.</p>
 </div>
 
 
+          </div>
+        </div>
       </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="../index.html">Inicio</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contenidos</a>
-        </p>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Tabla de Contenidos</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Modelos de la base de datos</a><ul>
+<li><a class="reference internal" href="#module-bancos.models">Bancos</a></li>
+<li><a class="reference internal" href="#module-contabilidad.models">Contabilidad</a></li>
+<li><a class="reference internal" href="#module-inventario.models">Inventario</a></li>
+<li><a class="reference internal" href="#module-pagos.models">Pagos</a></li>
+</ul>
+</li>
+</ul>
 
+  <h4>Tema anterior</h4>
+  <p class="topless"><a href="../index.html"
+                        title="capítulo anterior">Inicio</a></p>
+  <div role="note" aria-label="source link">
+    <h3>Esta página</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/modules/models.rst.txt"
+            rel="nofollow">Mostrar el código</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Búsqueda rápida</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Ir a" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
       </div>
-
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navegación</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="Índice General"
+             >índice</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Índice de Módulos Python"
+             >módulos</a> |</li>
+        <li class="right" >
+          <a href="../index.html" title="Inicio"
+             >anterior</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">documentación de Sistema contable - 0.1</a> &#187;</li> 
+      </ul>
+    </div>
     <div class="footer" role="contentinfo">
         &#169; Derechos de autor 2017, Luis Carlos Contreras.
       Creado con <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.4.
