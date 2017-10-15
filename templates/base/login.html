@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+<body class="hold-transition login-page">
+	<div class="login-box">
+		<div class="login-logo">
+			<a href="{% url 'home' %}"><b>UMG</b>Sistema contable</a>
+		</div>
+		<div class="login-box-body">
+			<p class="login-box-msg">Debe iniciar sesión para continuar</p>
+
+			<form action="{{ action }}" method="post">
+				{% csrf_token %}
+				{% for field in form %}
+				<div class="form-group">
+					{{ field.label_tag }} {{ field }}
+				</div>
+				{% endfor %}
+				<div class="row">
+					<div class="col-xs-12">
+						<button type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+{% endblock body %}

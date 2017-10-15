@@ -1,5 +1,7 @@
 from django import forms
 
+from bancos.models import Cheque
+from bancos.forms import ChequeForm
 from pagos.models import FacturaCompra, FacturaCompraDetalle
 
 
@@ -15,7 +17,7 @@ class FacturaCompraCompletaForm(forms.ModelForm):
         model = FacturaCompra
         fields = ('completa',)
         widgets = {
-        	'completa': forms.HiddenInput()
+            'completa': forms.HiddenInput()
         }
 
 
@@ -24,6 +26,11 @@ class FacturaCompraDetalleForm(forms.ModelForm):
         model = FacturaCompraDetalle
         fields = "__all__"
         widgets = {
-        	'factura': forms.HiddenInput()
+            'factura': forms.HiddenInput()
         }
-    
+
+
+class PagoForm(ChequeForm):
+    factura = forms.ModelChoiceField(
+        queryset=FacturaCompra.objects.all(),
+        widget=forms.HiddenInput())

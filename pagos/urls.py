@@ -11,5 +11,9 @@ urlpatterns = [
     url(r'^factura/(?P<pk>\d+)/$', pagos_views.FacturaCompraDetailView.as_view(), name='factura_detail'),
     url(r'^factura/(?P<pk>\d+)/update/$', pagos_views.FacturaCompraUpdateView.as_view(), name='factura_update'),
 
+    url(r'^factura/(?P<pk>\d+)/pagar/$', pagos_views.PagoCreateView.as_view(), name='factura_pagar'),
+
     url(r'^facturadetalle/add/$', pagos_views.FacturaCompraDetalleCreateView.as_view(), name='facturadetalle_add'),
+
+    url(r'^pago/add/$', pagos_views.PagoCreateView.as_view(), name='pago_add'),
 ]

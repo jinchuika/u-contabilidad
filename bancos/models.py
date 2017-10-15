@@ -79,10 +79,19 @@ class CuentaBanco(models.Model):
         return reverse_lazy('cuenta_detail', kwargs={'pk': self.id})
 
 
+class ChequeraManager(models.Manager):
+    def get_queryset(self):
+        no_disponibles = []
+        queryset = super().get_queryset()
+        for chequera in queryset:
+            if chequera.cheques_disponibles <= 0:
+                no_disponibles.append(chequera.id)
+        return queryset.exclude(id__in=no_disponibles)
+
 class Chequera(models.Model):
 
     """Chequera relacionada a una cuenta bancaria.
-    
+
     Attributes:
         cantidad_cheques (int): Cantidad de cheques que puede emitir esta chequera
         cuenta (:class:`CuentaBanco`): Cuenta bancaria que emite esta chequera :class:`CuentaBancaria`.
@@ -92,6 +101,9 @@ class Chequera(models.Model):
     cuenta = models.ForeignKey(CuentaBanco, related_name='chequeras')
     numero = models.CharField(max_length=20)
     cantidad_cheques = models.IntegerField(default=1)
+
+    objects = models.Manager()
+    disponibles = ChequeraManager()
 
     class Meta:
         verbose_name = "Chequera"
@@ -120,7 +132,7 @@ class Cheque(models.Model):
         fecha (date): Fecha en la que se crea el cheque
         numero (int): Número de cheque
     """
-    
+
     chequera = models.ForeignKey(Chequera, related_name='cheques')
     numero = models.PositiveIntegerField(verbose_name='Número')
     fecha = models.DateField()

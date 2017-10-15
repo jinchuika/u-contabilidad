@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from django.urls import reverse_lazy
 
@@ -154,8 +155,8 @@ class FacturaCompraDetalle(models.Model):
 
 class Pago(models.Model):
     factura = models.ForeignKey(FacturaCompra, related_name='pagos')
-    cheque = models.ForeignKey(Cheque)
-    fecha = models.DateField()
+    cheque = models.ForeignKey(Cheque, related_name='pagos')
+    fecha = models.DateField(default=timezone.now)
 
     class Meta:
         verbose_name = "Pago"

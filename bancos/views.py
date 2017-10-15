@@ -4,8 +4,9 @@ from django.views.generic.edit import CreateView, UpdateView
 from braces.views import LoginRequiredMixin
 
 from bancos.models import (
-	Banco, CuentaBanco, Chequera)
+	Banco, CuentaBanco, Chequera, Cheque)
 from bancos.forms import BancoForm, CuentaBancoForm
+from pagos.models import Pago
 
 class BancoCreateView(CreateView):
 	model = Banco

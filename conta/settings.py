@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'pagos',
     'inventario',
     'contabilidad',
+    'menu',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -117,3 +118,5 @@ STATICFILES_DIRS = [
 ]
 
 DOCS_ROOT = 'docs/_build/html/'
+
+LOGIN_URL = '/login/'
