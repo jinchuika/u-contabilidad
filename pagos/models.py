@@ -1,11 +1,14 @@
+"""Modelos para el módulo de de pagos.
+"""
 from django.utils import timezone
 from django.db import models
 from django.urls import reverse_lazy
 
 from bancos.models import Cheque
-from inventario.models import Producto
+from inventario.models import Producto, ActivoFijo
 from contabilidad.models import CuentaContable
 
+from pagos.managers import PendientesManager
 
 class TipoProveedor(models.Model):
 
@@ -30,8 +33,10 @@ class Proveedor(models.Model):
     """Proveedor para factura.
     
     Attributes:
+        direccion (str): Dirección del proveedor
         nit (str): NIT del proveedor
         nombre (str): Nombre a mostrar
+        telefono (int): Número telefónico del proveedor
         tipo_proveedor (:class:`TipoProveedor`): Tipo de proveedor
     """
     
@@ -80,6 +85,9 @@ class FacturaCompra(models.Model):
     fecha_vencimiento = models.DateField()
     completa = models.BooleanField(default=False, blank=True)
 
+    objects = models.Manager()
+    pendientes = PendientesManager()
+
     class Meta:
         verbose_name = "Factura"
         verbose_name_plural = "Facturas"
@@ -108,7 +116,7 @@ class FacturaCompra(models.Model):
 
     @property
     def pagada(self):
-        return self.total > self.pagado
+        return self.total <= self.pagado
 
 
 class FacturaCompraDetalle(models.Model):
@@ -148,12 +156,38 @@ class FacturaCompraDetalle(models.Model):
             self.factura.numero,
             self.producto)
 
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            super(FacturaCompraDetalle, self).save(*args, **kwargs)
+            if self.cuenta_contable.activo_fijo:
+                for producto in range(self.cantidad):
+                    ActivoFijo.objects.create(
+                        producto=self.producto,
+                        fecha_registro=self.factura.fecha_emision,
+                        depreciacion=self.cuenta_contable.depreciacion,
+                        precio=self.precio_unitario)
+        else:
+            super(FacturaCompraDetalle, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return self.factura.get_absolute_url()
+
     @property
     def subtotal(self):
         return self.precio_unitario * self.cantidad
 
 
 class Pago(models.Model):
+
+    """Modelo para indicar que un :class:`Cheque` fue utilizado
+    para pagar una :class:`Factura`.
+    
+    Attributes:
+        cheque (:class:`Cheque`): El cheque que fue creado
+        factura (:class:`Factura`): La factura para la que se realiza el pago
+        fecha (date): La fecha en que se registra el pago
+    """
+    
     factura = models.ForeignKey(FacturaCompra, related_name='pagos')
     cheque = models.ForeignKey(Cheque, related_name='pagos')
     fecha = models.DateField(default=timezone.now)
@@ -170,3 +204,6 @@ class Pago(models.Model):
     @property
     def monto(self):
         return self.cheque.monto
+
+    def get_absolute_url(self):
+        return self.factura.get_absolute_url()

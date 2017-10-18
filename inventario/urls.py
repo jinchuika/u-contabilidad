@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^producto/(?P<pk>\d+)/$', inventario_views.ProductoDetailView.as_view(), name='producto_detail'),
 
     url(r'^activofijo/list/$', inventario_views.ActivoFijoListView.as_view(), name='activofijo_list'),
+    url(r'^activofijo/(?P<pk>\d+)/$', inventario_views.ActivoFijoDetailView.as_view(), name='activofijo_detail'),
 ]

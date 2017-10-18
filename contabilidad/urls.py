@@ -6,5 +6,8 @@ urlpatterns = [
     url(r'^cuentacontable/add/$', contabilidad_views.CuentaContableCreateView.as_view(), name='cuentacontable_add'),
     url(r'^cuentacontable/list/$', contabilidad_views.CuentaContableListView.as_view(), name='cuentacontable_list'),
     url(r'^cuentacontable/(?P<pk>\d+)/$', contabilidad_views.CuentaContableDetailView.as_view(), name='cuentacontable_detail'),
+
+    url(r'^porpagar/$', contabilidad_views.FacturaPendienteListView.as_view(), name='cuentas_por_pagar'),
+
     url(r'^$', contabilidad_views.HomeView.as_view(), name='home'),
 ]

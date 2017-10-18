@@ -1,0 +1,36 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="box box-warning">
+	<div class="box-header">
+		<h3 class="box-title">Cuentas por pagar</h3>
+	</div>
+	<div class="box-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Factura</th>
+					<th>Proveedor</th>
+					<th>Fecha de vencimiento</th>
+					<th>Saldo</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for factura in object_list|dictsort:"fecha_vencimiento" %}
+					<tr>
+						<td>
+							<a href="{{ factura.get_absolute_url }}" class="btn btn-block">
+							{{ factura.serie|default_if_none:"" }} {{ factura.numero }}
+							</a>
+						</td>
+						<td>{{ factura.proveedor }}</td>
+						<td>{{ factura.fecha_vencimiento|date:"d/m/Y" }}</td>
+						<td>{{ factura.saldo }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{{ context }}
+	</div>
+</div>
+{% endblock content %}

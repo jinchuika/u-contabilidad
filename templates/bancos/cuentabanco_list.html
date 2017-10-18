@@ -9,7 +9,13 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box">
-				<div class="box-body">
+				<div class="box-header">
+					<h3></h3>
+					<span class="box-tools pull-right">
+						<a href="{% url 'cuenta_add' %}" class="btn btn-info">Agregar cuentas</a>
+					</span>
+				</div>
+				<div class="box-body table-responsive">
 					{% include "bancos/snippet_cuentabanco_list.html" with mostrar_banco=True %}
 				</div>
 			</div>

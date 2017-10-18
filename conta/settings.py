@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'inventario',
     'contabilidad',
     'menu',
+    'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -22,6 +22,7 @@ class ChequeForm(forms.ModelForm):
     class Meta:
         model = Cheque
         fields = '__all__'
+        exclude = ('numero',)
         widgets = {
             'monto': forms.NumberInput(attrs={'min': 0.01})
         }

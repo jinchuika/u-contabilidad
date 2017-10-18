@@ -11,9 +11,7 @@
                 {{ item.title }}
             </a>
             {% if item.children %}
-                {% with items=item.children template_name='base-sidebar-sub.html' %}
-                   {% include template_name %}
-                {% endwith %}
+                {% include "base-sidebar-sub.html" with item=item.children %}
             {% endif %}
             </li>
         {% endif %}

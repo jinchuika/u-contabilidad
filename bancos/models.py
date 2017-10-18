@@ -78,6 +78,18 @@ class CuentaBanco(models.Model):
     def get_absolute_url(self):
         return reverse_lazy('cuenta_detail', kwargs={'pk': self.id})
 
+    @property
+    def credito(self):
+        return sum(deposito.monto for deposito in self.depositos.all())
+
+    @property
+    def debito(self):
+        return sum(cheque.monto for cheque in Cheque.objects.filter(chequera__cuenta=self))
+
+    @property
+    def saldo(self):
+        return self.credito - self.debito
+
 
 class ChequeraManager(models.Manager):
     def get_queryset(self):
@@ -130,6 +142,8 @@ class Cheque(models.Model):
     Attributes:
         chequera (:class:`Chequera`): Chequera que emite el banco
         fecha (date): Fecha en la que se crea el cheque
+        monto (float): Cantidad de dinero a pagar
+        nombre (str): Nombre de la persona para quien se emite el cheque
         numero (int): Número de cheque
     """
 
@@ -151,6 +165,16 @@ class Cheque(models.Model):
 
 
 class DepositoBanco(models.Model):
+
+    """Registro para añadir dinero a una :class:`CuentaBanco`.
+    
+    Attributes:
+        comentario (str): Observaciones para el depósito
+        cuenta (:class:`CuentaBanco`): La cuenta a la que se deposita
+        fecha (date): Fecha del registro
+        monto (float): Cantidad a depositar
+    """
+    
     cuenta = models.ForeignKey(CuentaBanco, related_name='depositos')
     fecha = models.DateField()
     monto = models.DecimalField(max_digits=10, decimal_places=2)

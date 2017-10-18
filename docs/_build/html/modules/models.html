@@ -87,6 +87,18 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="bancos.models.Cheque.monto">
+<code class="descname">monto</code><a class="headerlink" href="#bancos.models.Cheque.monto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>float</em> – Cantidad de dinero a pagar</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.Cheque.nombre">
+<code class="descname">nombre</code><a class="headerlink" href="#bancos.models.Cheque.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Nombre de la persona para quien se emite el cheque</p>
+</dd></dl>
+
+<dl class="attribute">
 <dt id="bancos.models.Cheque.numero">
 <code class="descname">numero</code><a class="headerlink" href="#bancos.models.Cheque.numero" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p><em>int</em> – Número de cheque</p>
@@ -169,8 +181,33 @@ que no pueden hacer retiros (como las de inversión).</p>
 
 <dl class="class">
 <dt id="bancos.models.DepositoBanco">
-<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">DepositoBanco</code><span class="sig-paren">(</span><em>id</em>, <em>cuenta</em>, <em>fecha</em>, <em>monto</em>, <em>comentario</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.DepositoBanco" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">bancos.models.</code><code class="descname">DepositoBanco</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#bancos.models.DepositoBanco" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Registro para añadir dinero a una <a class="reference internal" href="#bancos.models.CuentaBanco" title="bancos.models.CuentaBanco"><code class="xref py py-class docutils literal"><span class="pre">CuentaBanco</span></code></a>.</p>
+<dl class="attribute">
+<dt id="bancos.models.DepositoBanco.comentario">
+<code class="descname">comentario</code><a class="headerlink" href="#bancos.models.DepositoBanco.comentario" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Observaciones para el depósito</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.DepositoBanco.cuenta">
+<code class="descname">cuenta</code><a class="headerlink" href="#bancos.models.DepositoBanco.cuenta" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><a class="reference internal" href="#bancos.models.CuentaBanco" title="bancos.models.CuentaBanco"><code class="xref py py-class docutils literal"><span class="pre">CuentaBanco</span></code></a> – La cuenta a la que se deposita</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.DepositoBanco.fecha">
+<code class="descname">fecha</code><a class="headerlink" href="#bancos.models.DepositoBanco.fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – Fecha del registro</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="bancos.models.DepositoBanco.monto">
+<code class="descname">monto</code><a class="headerlink" href="#bancos.models.DepositoBanco.monto" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>float</em> – Cantidad a depositar</p>
+</dd></dl>
+
+</dd></dl>
 
 </div>
 <div class="section" id="module-contabilidad.models">
@@ -210,19 +247,19 @@ puede tener una depreciación cada cierto tiempo.</p>
 <dl class="attribute">
 <dt id="inventario.models.ActivoFijo.depreciacion">
 <code class="descname">depreciacion</code><a class="headerlink" href="#inventario.models.ActivoFijo.depreciacion" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p><em>models.DecimalField</em> – Depreciación anual del activo</p>
+<dd><p><em>float</em> – Depreciación anual del activo</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="inventario.models.ActivoFijo.fecha_registro">
 <code class="descname">fecha_registro</code><a class="headerlink" href="#inventario.models.ActivoFijo.fecha_registro" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p><em>models.DateField</em> – Fecha en la que el activo entra al inventario</p>
+<dd><p><em>date</em> – Fecha en la que el activo entra al inventario</p>
 </dd></dl>
 
 <dl class="attribute">
 <dt id="inventario.models.ActivoFijo.precio">
 <code class="descname">precio</code><a class="headerlink" href="#inventario.models.ActivoFijo.precio" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p><em>models.DecimalField</em> – Precio al que fue adquirido el activo fijo</p>
+<dd><p><em>float</em> – Precio al que fue adquirido el activo fijo</p>
 </dd></dl>
 
 <dl class="attribute">
@@ -240,7 +277,7 @@ puede tener una depreciación cada cierto tiempo.</p>
 <dl class="attribute">
 <dt id="inventario.models.Producto.nombre">
 <code class="descname">nombre</code><a class="headerlink" href="#inventario.models.Producto.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd><p><em>models.CharField</em> – Nombre del producto</p>
+<dd><p><em>str</em> – Nombre del producto</p>
 </dd></dl>
 
 </dd></dl>
@@ -248,6 +285,7 @@ puede tener una depreciación cada cierto tiempo.</p>
 </div>
 <div class="section" id="module-pagos.models">
 <span id="pagos"></span><h2>Pagos<a class="headerlink" href="#module-pagos.models" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Modelos para el módulo de de pagos.</p>
 <dl class="class">
 <dt id="pagos.models.FacturaCompra">
 <em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">FacturaCompra</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.FacturaCompra" title="Enlazar permanentemente con esta definición">¶</a></dt>
@@ -322,13 +360,39 @@ puede tener una depreciación cada cierto tiempo.</p>
 
 <dl class="class">
 <dt id="pagos.models.Pago">
-<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Pago</code><span class="sig-paren">(</span><em>id</em>, <em>factura</em>, <em>cheque</em>, <em>fecha</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Pago" title="Enlazar permanentemente con esta definición">¶</a></dt>
-<dd></dd></dl>
+<em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Pago</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Pago" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p>Modelo para indicar que un <code class="xref py py-class docutils literal"><span class="pre">Cheque</span></code> fue utilizado
+para pagar una <code class="xref py py-class docutils literal"><span class="pre">Factura</span></code>.</p>
+<dl class="attribute">
+<dt id="pagos.models.Pago.cheque">
+<code class="descname">cheque</code><a class="headerlink" href="#pagos.models.Pago.cheque" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal"><span class="pre">Cheque</span></code> – El cheque que fue creado</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.Pago.factura">
+<code class="descname">factura</code><a class="headerlink" href="#pagos.models.Pago.factura" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><code class="xref py py-class docutils literal"><span class="pre">Factura</span></code> – La factura para la que se realiza el pago</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.Pago.fecha">
+<code class="descname">fecha</code><a class="headerlink" href="#pagos.models.Pago.fecha" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>date</em> – La fecha en que se registra el pago</p>
+</dd></dl>
+
+</dd></dl>
 
 <dl class="class">
 <dt id="pagos.models.Proveedor">
 <em class="property">class </em><code class="descclassname">pagos.models.</code><code class="descname">Proveedor</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#pagos.models.Proveedor" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p>Proveedor para factura.</p>
+<dl class="attribute">
+<dt id="pagos.models.Proveedor.direccion">
+<code class="descname">direccion</code><a class="headerlink" href="#pagos.models.Proveedor.direccion" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>str</em> – Dirección del proveedor</p>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="pagos.models.Proveedor.nit">
 <code class="descname">nit</code><a class="headerlink" href="#pagos.models.Proveedor.nit" title="Enlazar permanentemente con esta definición">¶</a></dt>
@@ -339,6 +403,12 @@ puede tener una depreciación cada cierto tiempo.</p>
 <dt id="pagos.models.Proveedor.nombre">
 <code class="descname">nombre</code><a class="headerlink" href="#pagos.models.Proveedor.nombre" title="Enlazar permanentemente con esta definición">¶</a></dt>
 <dd><p><em>str</em> – Nombre a mostrar</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pagos.models.Proveedor.telefono">
+<code class="descname">telefono</code><a class="headerlink" href="#pagos.models.Proveedor.telefono" title="Enlazar permanentemente con esta definición">¶</a></dt>
+<dd><p><em>int</em> – Número telefónico del proveedor</p>
 </dd></dl>
 
 <dl class="attribute">

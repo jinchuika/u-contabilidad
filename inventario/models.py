@@ -8,7 +8,7 @@ class Producto(models.Model):
     """Producto para inventario o para mercadería a la venta
 
     Attributes:
-        nombre (models.CharField): Nombre del producto
+        nombre (str): Nombre del producto
     """
 
     nombre = models.CharField(max_length=128)
@@ -28,11 +28,11 @@ class ActivoFijo(models.Model):
 
     """Activo fijo adquirido por la organización que
     puede tener una depreciación cada cierto tiempo.
-
+    
     Attributes:
-        depreciacion (models.DecimalField): Depreciación anual del activo
-        fecha_registro (models.DateField): Fecha en la que el activo entra al inventario
-        precio (models.DecimalField): Precio al que fue adquirido el activo fijo
+        depreciacion (float): Depreciación anual del activo
+        fecha_registro (date): Fecha en la que el activo entra al inventario
+        precio (float): Precio al que fue adquirido el activo fijo
         producto (:class:`Producto`): Producto adquirido en el inventario
     """
 
@@ -50,6 +50,9 @@ class ActivoFijo(models.Model):
 
     def __str__(self):
         return '{}'.format(self.producto)
+
+    def get_absolute_url(self):
+        return reverse_lazy('activofijo_detail', kwargs={'pk': self.id})
 
     def saldo(self, fecha=datetime.today()):
         annos = (fecha.year - self.fecha_registro.year) * 12

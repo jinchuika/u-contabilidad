@@ -2,7 +2,6 @@
 
 {% block sidebar %}
 <section class="sidebar">
-
 	<div class="user-panel">
 		<div class="pull-left image">
 			<img src="{{ user.perfil.foto }}" class="img-circle" alt="User Image">
@@ -12,7 +11,7 @@
 		</div>
 	</div>
 
-	<ul class="sidebar-menu">
+	<ul class="sidebar-menu" data-widget="tree">
 		{% generate_menu %}
 		{% for key, menu in menus.items %}
 			{% for item in menu %}
@@ -21,7 +20,7 @@
 						<li class="header">....</li>
 						{% endif %}
 						<li class="{% if item.selected %} active{% endif %}{% if item.children %} treeview{% endif %}" id="top-menu-{{ item.slug }}">
-							<a href="{{ item.url }}"{% if item.children %} {% endif %}>
+							<a {% if item.children %}href="#"{% else %}href="{{ item.url }}" {% endif %}>
 								{% if item.icon %}
 								<i class="fa {{ item.icon }}"></i>
 								{% endif %}

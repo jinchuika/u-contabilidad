@@ -1,21 +1,27 @@
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import CreateView, UpdateView
 
+from braces.views import LoginRequiredMixin
+
 from inventario.models import Producto, ActivoFijo
 
 
-class ProductoCreateView(CreateView):
+class ProductoCreateView(LoginRequiredMixin, CreateView):
     model = Producto
     fields = '__all__'
 
 
-class ProductoDetailView(DetailView):
+class ProductoDetailView(LoginRequiredMixin, DetailView):
     model = Producto
 
 
-class ProductoListView(ListView):
+class ProductoListView(LoginRequiredMixin, ListView):
     model = Producto
 
 
-class ActivoFijoListView(ListView):
+class ActivoFijoListView(LoginRequiredMixin, ListView):
+    model = ActivoFijo
+
+
+class ActivoFijoDetailView(LoginRequiredMixin, DetailView):
     model = ActivoFijo

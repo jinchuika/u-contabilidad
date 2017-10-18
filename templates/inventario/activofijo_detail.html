@@ -1,0 +1,37 @@
+{% extends "base/base.html" %}
+
+{% block content_header %}
+<h1>{{ producto }}</h1>
+{% endblock content_header %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="box box-primary">
+				<div class="box-header">
+					<h3 class="box-title">Detalle de depreciación</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Mes</th>
+								<th>Saldo</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for saldo in activofijo.historico|dictsort:"mes" %}
+							<tr>
+								<td>{{ saldo.mes }}</td>
+								<td>Q{{ saldo.monto|floatformat:"2" }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

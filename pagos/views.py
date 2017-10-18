@@ -43,8 +43,12 @@ class FacturaCompraDetailView(LoginRequiredMixin, DetailView):
         context['completa_form'] = FacturaCompraCompletaForm(
             instance=self.object,
             initial={'completa': True})
+
         if self.object.completa:
+            # Si la factura ya está completa, envía el formulario de pago
             context['cheque_form'] = PagoForm(
+                monto_maximo = self.object.saldo,
+                fecha_minima = self.object.fecha_emision,
                 initial={'factura': self.object})
         return context
 
@@ -67,17 +71,10 @@ class PagoCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super(PagoCreateView, self).get_context_data(**kwargs)
-        context['facturacompra'] = FacturaCompra.objects.get(id=self.kwargs['pk'])
         return context
 
-
-# class PagoCreateView(CreateView):
-#     model = Cheque
-#     form_class = PagoForm
-
-#     def form_valid(self, form):
-#         self.object = form.save(commit=False)
-#         self.object.save()
-#         pago = Pago(cheque=self.object, factura=form.cleaned_data['factura'])
-#         pago.save()
-#         return super(PagoCreateView, self).form_valid(form)
+    def form_valid(self, form):
+        form.instance.numero = form.instance.chequera.cheques.count() + 1
+        self.object = form.save()
+        self.object.pagos.create(factura=form.cleaned_data['factura'])
+        return super(PagoCreateView, self).form_valid(form)

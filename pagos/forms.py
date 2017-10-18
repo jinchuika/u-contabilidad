@@ -34,3 +34,17 @@ class PagoForm(ChequeForm):
     factura = forms.ModelChoiceField(
         queryset=FacturaCompra.objects.all(),
         widget=forms.HiddenInput())
+
+    def __init__(self, *args, **kwargs):
+        monto_maximo = kwargs.pop('monto_maximo', False)
+        fecha_minima = kwargs.pop('fecha_minima', False)
+        super(PagoForm, self).__init__(*args, **kwargs)
+        if monto_maximo:
+            self.fields['monto'].widget = forms.NumberInput(attrs={
+                'min': 0.01,
+                'max': monto_maximo,
+                'step': 0.01})
+        if fecha_minima:
+            self.fields['fecha'].widget = forms.DateInput(attrs={
+                'max': str(fecha_minima),
+                'class': 'datepicker'})

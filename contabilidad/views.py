@@ -3,6 +3,7 @@ from django.views.generic.edit import CreateView, UpdateView
 
 from braces.views import LoginRequiredMixin
 
+from pagos.models import FacturaCompra
 from contabilidad.models import CuentaContable
 
 
@@ -21,3 +22,14 @@ class CuentaContableListView(LoginRequiredMixin, ListView):
 
 class CuentaContableDetailView(LoginRequiredMixin, DetailView):
     model = CuentaContable
+
+
+class FacturaPendienteListView(ListView):
+    queryset = FacturaCompra.pendientes.all()
+    template_name = "contabilidad/cuentas_pendientes.html"
+    context_object_name = 'pendientes_list'
+
+    def get_context_data(self, **kwargs):
+        context = super(FacturaPendienteListView, self).get_context_data(**kwargs)
+        print(context)
+        return context

@@ -24,7 +24,6 @@ class ViewMenuItem(MenuItem):
             else:
                 self.visible = False
 
-
 # Contabilidad
 contabilidad_children = (
     ViewMenuItem(
@@ -39,21 +38,21 @@ Menu.add_item(
         "Contabilidad",
         '#',
         weight=40,
-        icon="fa-cog",
+        icon="fa-list-alt",
         children=contabilidad_children))
 
 # Menú de bancos
 bancos_children = (
     ViewMenuItem(
-        "Bancos",
+        "Listado de bancos",
         reverse_lazy("banco_list"),
         weight=10,
         icon="fa-list"),
     ViewMenuItem(
         "Cuentas bancarias",
         reverse_lazy("cuenta_list"),
-        weight=5,
-        icon="fa-list"))
+        weight=20,
+        icon="fa-address-card-o"))
 
 Menu.add_item(
     "user",
@@ -61,5 +60,50 @@ Menu.add_item(
         "Bancos",
         '#',
         weight=20,
-        icon="fa-leaf",
+        icon="fa-university",
         children=bancos_children))
+
+# Pagos de bancos
+pagos_children = (
+    ViewMenuItem(
+        "Proveedores",
+        reverse_lazy("proveedor_list"),
+        weight=10,
+        icon="fa-list"),
+    ViewMenuItem(
+        "Nueva compra",
+        reverse_lazy("factura_add"),
+        weight=5,
+        icon="fa-list"))
+
+Menu.add_item(
+    "user",
+    ViewMenuItem(
+        "Pagos",
+        '#',
+        weight=20,
+        icon="fa-usd",
+        children=pagos_children))
+
+
+# Inventario
+inventario_children = (
+    ViewMenuItem(
+        "Productos",
+        reverse_lazy("producto_list"),
+        weight=10,
+        icon="fa-list"),
+    ViewMenuItem(
+        "Activos fijos",
+        reverse_lazy("activofijo_list"),
+        weight=5,
+        icon="fa-list"))
+
+Menu.add_item(
+    "user",
+    ViewMenuItem(
+        "Inventario",
+        '#',
+        weight=20,
+        icon="fa-cubes",
+        children=inventario_children))
