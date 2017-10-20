@@ -8,7 +8,7 @@ from contabilidad.models import CuentaContable
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = "base/base.html"
+    template_name = "contabilidad/dashboard.html"
 
 
 class CuentaContableCreateView(LoginRequiredMixin, CreateView):
