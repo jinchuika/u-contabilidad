@@ -1,9 +1,84 @@
 {% extends "base/base.html" %}
 
 {% block content_header %}
-	<h1>Chequera {{ chequera }}</h1>
+<h1>Chequera {{ chequera }}</h1>
 {% endblock content_header %}
 
 {% block content %}
-
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Información general</h3>
+				</div>
+				<div class="box-body no-padding">
+					<table class="table table-hover">
+						<tr>
+							<th>Banco</th>
+							<td>
+								<a href="{{ chequera.cuenta.banco.get_absolute_url }}">
+									{{ chequera.cuenta.banco }}
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Cuenta</th>
+							<td>
+								<a href="{{ chequera.cuenta.get_absolute_url }}">
+									{{ chequera.cuenta.numero }}
+								</a>
+							</td>
+						</tr>
+						<tr>
+							<th>Número</th>
+							<td>{{ chequera.numero }}</td>
+						</tr>
+						<tr>
+							<th>Cantidad de cheques</th>
+							<td>{{ chequera.cantidad_cheques }}</td>
+						</tr>
+						<tr>
+							<th>Cheques emitidos</th>
+							<td>{{ chequera.cheques.count }}</td>
+						</tr>
+						<tr>
+							<th>Cheques disponibles</th>
+							<td>{{ chequera.cheques_disponibles }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="box">
+				<div class="box-header">
+					<h3 class="box-title">Cheques emitidos</h3>
+				</div>
+				<div class="box-body">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Número</th>
+								<th>Fecha</th>
+								<th>Monto</th>
+								<th>A nombre de	</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for cheque in chequera.cheques.all %}
+							<tr>
+								<td>{{ cheque.numero }}</td>
+								<td>{{ cheque.fecha }}</td>
+								<td>Q. {{ cheque.monto }}</td>
+								<td>{{ cheque.nombre }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}

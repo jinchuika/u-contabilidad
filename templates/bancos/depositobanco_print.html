@@ -1,0 +1,47 @@
+{% extends "base/base_print.html" %}
+
+{% block page_title %}
+	<title>Depóstio bancario</title>
+{% endblock page_title %}
+
+{% block content %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="box box-primary box-solid">
+				<div class="box-header">
+					<h3 class="box-title">Depósito {{ depositobanco.id }}</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover">
+						<tr>
+							<th>Banco</th>
+							<td>
+								{{ depositobanco.cuenta.banco }}
+							</td>
+						</tr>
+						<tr>
+							<th>Cuenta bancaria</th>
+							<td>
+								{{ depositobanco.cuenta.numero }}
+							</td>
+						</tr>
+						<tr>
+							<th>Fecha</th>
+							<td>{{ depositobanco.fecha }}</td>
+						</tr>
+						<tr>
+							<th>Monto</th>
+							<td>Q. {{ depositobanco.monto }}</td>
+						</tr>
+						<tr>
+							<th>Comentario</th>
+							<td>{{ depositobanco.comentario|default_if_none:"" }}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

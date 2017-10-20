@@ -10,14 +10,15 @@ from contabilidad.models import CuentaContable
 
 from pagos.managers import PendientesManager
 
+
 class TipoProveedor(models.Model):
 
     """Indica si un proveedor es persona individual, empresa, etc.
-    
+
     Attributes:
         tipo_proveedor (str): Nombre a mostrar
     """
-    
+
     tipo_proveedor = models.CharField(max_length=15)
 
     class Meta:
@@ -31,7 +32,7 @@ class TipoProveedor(models.Model):
 class Proveedor(models.Model):
 
     """Proveedor para factura.
-    
+
     Attributes:
         direccion (str): Dirección del proveedor
         nit (str): NIT del proveedor
@@ -39,7 +40,7 @@ class Proveedor(models.Model):
         telefono (int): Número telefónico del proveedor
         tipo_proveedor (:class:`TipoProveedor`): Tipo de proveedor
     """
-    
+
     nit = models.CharField(max_length=10, unique=True)
     nombre = models.CharField(max_length=128)
     tipo_proveedor = models.ForeignKey(
@@ -69,7 +70,7 @@ class Proveedor(models.Model):
 class FacturaCompra(models.Model):
 
     """Factura para registrar una compra de mercadería, inventario o servicio
-    
+
     Attributes:
         fecha_emision (date): Fecha en la que se emitió la factura
         fecha_vencimiento (date): Fecha en la que debe pagarse la factura
@@ -77,16 +78,13 @@ class FacturaCompra(models.Model):
         proveedor (:class:`Proveedor`): Proveedor del producto
         serie (str): Serie de la factura
     """
-    
+
     proveedor = models.ForeignKey(Proveedor, on_delete=models.PROTECT)
     serie = models.CharField(max_length=12, null=True, blank=True)
     numero = models.PositiveIntegerField(verbose_name='Número')
     fecha_emision = models.DateField()
     fecha_vencimiento = models.DateField()
     completa = models.BooleanField(default=False, blank=True)
-
-    objects = models.Manager()
-    pendientes = PendientesManager()
 
     class Meta:
         verbose_name = "Factura"
@@ -117,6 +115,15 @@ class FacturaCompra(models.Model):
     @property
     def pagada(self):
         return self.total <= self.pagado
+
+    @property
+    def estado(self):
+        if not self.completa:
+            return 'En edición'
+        elif self.pagada:
+            return 'Pagada'
+        else:
+            return 'Por pagar'
 
 
 class FacturaCompraDetalle(models.Model):
@@ -181,13 +188,13 @@ class Pago(models.Model):
 
     """Modelo para indicar que un :class:`Cheque` fue utilizado
     para pagar una :class:`Factura`.
-    
+
     Attributes:
         cheque (:class:`Cheque`): El cheque que fue creado
         factura (:class:`Factura`): La factura para la que se realiza el pago
         fecha (date): La fecha en que se registra el pago
     """
-    
+
     factura = models.ForeignKey(FacturaCompra, related_name='pagos')
     cheque = models.ForeignKey(Cheque, related_name='pagos')
     fecha = models.DateField(default=timezone.now)

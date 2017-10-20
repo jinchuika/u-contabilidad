@@ -4,8 +4,8 @@ from django.views.generic.edit import CreateView, UpdateView
 from braces.views import LoginRequiredMixin
 
 from bancos.models import (
-	Banco, CuentaBanco, Chequera, Cheque)
-from bancos.forms import BancoForm, CuentaBancoForm
+	Banco, CuentaBanco, Chequera, Cheque, DepositoBanco)
+from bancos.forms import BancoForm, CuentaBancoForm, DepositoBancoForm
 from pagos.models import Pago
 
 class BancoCreateView(CreateView):
@@ -51,3 +51,22 @@ class ChequeraCreateView(CreateView):
 
 class ChequeraDetailView(DetailView):
     model = Chequera
+
+
+class DepositoBancoCreateView(CreateView):
+    model = DepositoBanco
+    form_class = DepositoBancoForm
+
+
+class DepositoBancoDetailView(DetailView):
+    model = DepositoBanco
+
+
+class DepositoBancoPrintView(DetailView):
+    model = DepositoBanco
+    template_name = 'bancos/depositobanco_print.html'
+
+
+class ChequePrintView(DetailView):
+    model = Cheque
+    template_name = "bancos/cheque_print.html"

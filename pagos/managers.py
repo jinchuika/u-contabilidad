@@ -2,7 +2,7 @@ from datetime import timedelta, date
 from django.db import models
 
 
-class PendientesManager(models.Manager):
+class PendientesManager(models.QuerySet):
     def get_queryset(self):
         no_pagadas = []
         queryset = super().get_queryset()
@@ -12,7 +12,7 @@ class PendientesManager(models.Manager):
         return queryset.exclude(id__in=no_pagadas)
 
     def vencidas(self):
-        return self.get_queryset().filter(fecha_vencimiento__lt=date.today())
+        return self.filter(fecha_vencimiento__lt=date.today())
 
     def a_30(self):
         td = date.today() + timedelta(days=30)

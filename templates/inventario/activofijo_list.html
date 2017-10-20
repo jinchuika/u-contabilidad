@@ -18,7 +18,7 @@
 								<th>Nombre</th>
 								<th>Fecha de ingreso</th>
 								<th>Precio original</th>
-								<th>Saldo</th>
+								<th>Saldo actual</th>
 								<th>Depreciación</th>
 							</tr>
 						</thead>
@@ -29,16 +29,9 @@
 									<a href="{{ activofijo.get_absolute_url }}" class="btn btn-block">{{ activofijo }}</a>
 								</td>
 								<td>{{ activofijo.fecha_registro|date:"Y-m-d" }}</td>
-								<td>{{ activofijo.precio }}</td>
-								<td>{{ activofijo.saldo.monto }}</td>
-								<td>{{ activofijo.depreciacion }}</td>
-								<td>
-									<ul>
-									{% for saldo in activofijo.historico %}
-										<li>Q{{ saldo.monto|floatformat:"2" }} -- {{ saldo.mes }} -- {{ saldo.depreciado|floatformat:"2" }}</li>
-									{% endfor %}
-									</ul>
-								</td>
+								<td>Q. {{ activofijo.precio }}</td>
+								<td>Q. {{ activofijo.saldo.monto|floatformat:"2" }}</td>
+								<td>{{ activofijo.depreciacion|floatformat:"2" }} %</td>
 							</tr>
 							{% endfor %}
 						</tbody>

@@ -25,11 +25,17 @@ class CuentaContableDetailView(LoginRequiredMixin, DetailView):
 
 
 class FacturaPendienteListView(ListView):
-    queryset = FacturaCompra.pendientes.all()
     template_name = "contabilidad/cuentas_pendientes.html"
     context_object_name = 'pendientes_list'
 
+    def get_queryset(self):
+        no_pagadas = []
+        queryset = FacturaCompra.objects.all()
+        for factura in queryset:
+            if factura.pagada:
+                no_pagadas.append(factura.id)
+        return queryset.exclude(id__in=no_pagadas)
+
     def get_context_data(self, **kwargs):
         context = super(FacturaPendienteListView, self).get_context_data(**kwargs)
-        print(context)
         return context

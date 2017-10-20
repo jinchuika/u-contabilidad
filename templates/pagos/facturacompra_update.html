@@ -1,23 +1,29 @@
 {% extends "base/base.html" %}
 {% load widget_tweaks %}
 
+{% block page_title %}
+<title>Factura de compra {{ facturacompra.id }}</title>
+{% endblock page_title %}
+
+
 {% block content_header %}
-<h1>Factura <small>#{{ facturacompra.id }}</small></h1>
+<h1>Compra <small>#{{ facturacompra.id }}</small></h1>
 {% endblock content_header %}
 
 {% block content %}
 <section class="invoice">
-	<!-- title row -->
 	<div class="row">
 		<div class="col-xs-12">
 			<h2 class="page-header">
-				<i class="fa fa-globe"></i> Compra
-				<small class="pull-right">Fecha: {{ facturacompra.fecha_emision|date:"d/m/Y" }}</small>
+				<i class="fa fa-globe"></i> Factura de compra
+				<small class="pull-right">
+					Fecha de emisión: {{ facturacompra.fecha_emision|date:"d/m/Y" }} <br>
+					Fecha de vencimiento: {{ facturacompra.fecha_vencimiento|date:"d/m/Y" }}
+				</small>
 			</h2>
 		</div>
-		<!-- /.col -->
 	</div>
-	<!-- info row -->
+
 	<div class="row invoice-info">
 		<div class="col-sm-8 invoice-col">
 			Proveedor
@@ -28,18 +34,14 @@
 				Teléfono: {{ facturacompra.proveedor.telefono }}<br>
 			</address>
 		</div>
-		<!-- /.col -->
 		<div class="col-sm-4 invoice-col">
 			<b>Compra #{{ facturacompra.id }}</b><br>
 			<br>
 			<b>Serie:</b> {{ facturacompra.serie|default_if_none:"" }}<br>
 			<b>Número:</b> {{ facturacompra.numero }}<br>
 		</div>
-		<!-- /.col -->
 	</div>
-	<!-- /.row -->
 
-	<!-- Table row -->
 	<div class="row">
 		<div class="col-xs-12 table-responsive">
 			<table class="table table-striped">
@@ -57,7 +59,14 @@
 					<tr>
 						<td>{{ detalle.cantidad }}</td>
 						<td>{{ detalle.producto }}</td>
-						<td>{{ detalle.cuenta_contable }}</td>
+						<td>
+							{{ detalle.cuenta_contable }}
+							{% if detalle.cuenta_contable.activo_fijo %}
+							<a href="{% url 'activofijo_list' %}" data-toggle="tooltip" title="" data-original-title="Status">
+							<i class="fa fa-circle-o text-yellow pull-right"></i>
+							</a>
+							{% endif %}
+						</td>
 						<td>{{ detalle.precio_unitario }}</td>
 						<td>{{ detalle.subtotal }}</td>
 					</tr>
@@ -65,77 +74,107 @@
 				</tbody>
 			</table>
 		</div>
-		<!-- /.col -->
 	</div>
-	<!-- /.row -->
 </section>
+
 <div class="container-fluid">
 	{% if not facturacompra.completa %}
 	<div class="row">
-		<!-- accepted payments column -->
 		<div class="col-xs-6">
-			<p class="lead">Agregar producto</p>
-			<div class="table-responsive">
-
-				<form action="{% url 'facturadetalle_add' %}" method="post">
-					{% csrf_token %}
+			<div class="box box-warning">
+				<div class="box-header">
+					<h3 class="box-title">Agregar producto</h3>
+				</div>
+				<div>
+					<div class="box-body no-padding table-responsive">
+						<form action="{% url 'facturadetalle_add' %}" method="post">
+							{% for hidden in detalle_form.hidden_fields %}
+							{{ hidden }}
+							{% endfor %}
+							{% csrf_token %}
+							<table class="table">
+								{% for field in detalle_form.visible_fields %}
+								<tr>
+									<td>{{ field.label_tag }}</td>
+									<td>{{ field|add_class:"form-control" }}</td>
+								</tr>
+								{% endfor %}
+								<tr>
+									<td colspan="2" class="pull-right">
+										<input type="submit" class="btn btn-primary" value="Agregar producto">
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-6">
+			<div class="box box-warning">
+				<div class="box-header">
+					<h3 class="box-title">Resumen</h3>
+				</div>
+				<div class="box-body no-padding">
 					<table class="table">
-						{{ detalle_form.as_table }}
 						<tr>
-							<td colspan="2" class="pull-right">
-								<input type="submit" class="btn btn-primary" value="Agregar">
+							<th>Estado</th>
+							<td>
+								<small class="label bg-yellow">
+									En edición
+								</small>
 							</td>
 						</tr>
+						<tr>
+							<th style="width:50%">Total:</th>
+							<td>Q {{ facturacompra.total }}</td>
+						</tr>
+						<tr>
+							<th>Pagado:</th>
+							<td>Q {{ facturacompra.pagado }}</td>
+						</tr>
+						<tr>
+							<th>Por pagar:</th>
+							<td>Q {{ facturacompra.saldo }}</td>
+						</tr>
 					</table>
-				</form>
-			</div>
-		</div>
-		<!-- /.col -->
-		<div class="col-xs-6">
-			<p class="lead">Fecha de vencimiento {{ facturacompra.fecha_vencimiento|date:"d/m/Y" }}</p>
-			<div class="table-responsive">
-				<table class="table">
-					<tr>
-						<th style="width:50%">Total:</th>
-						<td>Q {{ facturacompra.total }}</td>
-					</tr>
-					<tr>
-						<th>Pagado:</th>
-						<td>Q {{ facturacompra.pagado }}</td>
-					</tr>
-					<tr>
-						<th>Por pagar:</th>
-						<td>Q {{ facturacompra.saldo }}</td>
-					</tr>
-				</table>
+				</div>
+				<div class="box-footer">
+					<form method="post" action="{% url 'factura_update' pk=facturacompra.id %}">
+						{% csrf_token %}
+						{{ completa_form.as_p }}
+						<button type="submit" class="btn btn-success btn-lg">
+							<i class="fa fa-download"></i> Completar
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<!-- /.row -->
-
-	<!-- this row will not appear when printing -->
-	<div class="row">
-		<div class="col-xs-12">
-			<a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-			<form method="post" action="{% url 'factura_update' pk=facturacompra.id %}">
-				{% csrf_token %}
-				{{ completa_form.as_p }}
-				<button type="submit" class="btn btn-success pull-right" style="margin-right: 5px;">
-					<i class="fa fa-download"></i> Guardar
-				</button>
-			</form>
-		</div>
-	</div>
 	{% else %}
 	<div class="row-fluid">
 		<div class="col-xs-6">
-			<div class="box box-warning">
+			<div class="box {% if facturacompra.pagada %}box-success{% else %}box-warning{% endif %}">
 				<div class="box-header">
 					<h3 class="box-title">Fecha de vencimiento {{ facturacompra.fecha_vencimiento|date:"d/m/Y" }}</h3>
 				</div>
 				<div class="box-body table-responsive">
 					<table class="table table-hover">
+						<tr>
+							<th>Estado</th>
+							<td>
+								{% if facturacompra.pagada %}
+								<small class="label bg-green">
+									Pagada
+								</small>
+								{% else %}
+								<small class="label bg-red">
+									Pendiente de pago
+								</small>
+								{% endif %}
+							</td>
+						</tr>
 						<tr>
 							<th style="width:50%">Total:</th>
 							<td>Q {{ facturacompra.total }}</td>
@@ -154,6 +193,7 @@
 		</div>
 
 		<div class="col-xs-6">
+			{% if not facturacompra.pagada %}
 			<div class="box box-success">
 				<div class="box-header">
 					<h3 class="box-title">Agregar pago</h3>
@@ -175,6 +215,37 @@
 							</tr>
 						</table>
 					</form>
+				</div>
+			</div>
+			{% endif %}
+			<div class="box box-success">
+				<div class="box-header">
+					<h3 class="box-title">Pagos a esta factura</h3>
+				</div>
+				<div class="box-body table-responsive">
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Cheque</th>
+								<th>Fecha</th>
+								<th>Monto</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for pago in facturacompra.pagos.all %}
+							<tr>
+								<td>
+									{{ pago.cheque.numero }} {{ pago.cheque.chequera.cuenta.banco }}
+									<a href="{{ pago.cheque.get_print_url }}" target="_blank" class="pull-right btn btn-xs btn-primary">
+										<i class="fa fa-print"></i>
+									</a>
+								</td>
+								<td>{{ pago.fecha|date:"d/m/Y" }}</td>
+								<td>Q.{{ pago.monto }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

@@ -14,4 +14,10 @@ urlpatterns = [
 
     url(r'^chequera/add/$', bancos_views.ChequeraCreateView.as_view(), name='chequera_add'),
     url(r'^chequera/(?P<pk>\d+)/$', bancos_views.ChequeraDetailView.as_view(), name='chequera_detail'),
+
+    url(r'^deposito/add/$', bancos_views.DepositoBancoCreateView.as_view(), name='deposito_add'),
+    url(r'^deposito/(?P<pk>\d+)/$', bancos_views.DepositoBancoDetailView.as_view(), name='deposito_detail'),
+    url(r'^deposito/(?P<pk>\d+)/print/$', bancos_views.DepositoBancoPrintView.as_view(), name='deposito_print'),
+
+    url(r'^cheque/(?P<pk>\d+)/print/$', bancos_views.ChequePrintView.as_view(), name='cheque_print'),
 ]

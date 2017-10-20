@@ -30,7 +30,12 @@ contabilidad_children = (
         "Cuentas contables",
         reverse_lazy('cuentacontable_list'),
         weight=10,
-        icon="fa-desktop"),)
+        icon="fa-desktop"),
+    ViewMenuItem(
+        "Cuentas por pagar",
+        reverse_lazy('cuentas_por_pagar'),
+        weight=10,
+        icon="fa-clock-o"))
 
 Menu.add_item(
     "user",
@@ -52,7 +57,12 @@ bancos_children = (
         "Cuentas bancarias",
         reverse_lazy("cuenta_list"),
         weight=20,
-        icon="fa-address-card-o"))
+        icon="fa-address-card-o"),
+    ViewMenuItem(
+        "Nuevo depósito",
+        reverse_lazy("deposito_add"),
+        weight=20,
+        icon="fa-plus"))
 
 Menu.add_item(
     "user",
@@ -69,10 +79,15 @@ pagos_children = (
         "Proveedores",
         reverse_lazy("proveedor_list"),
         weight=10,
-        icon="fa-list"),
+        icon="fa-user"),
     ViewMenuItem(
         "Nueva compra",
         reverse_lazy("factura_add"),
+        weight=5,
+        icon="fa-plus"),
+    ViewMenuItem(
+        "Lista de compras",
+        reverse_lazy("factura_list"),
         weight=5,
         icon="fa-list"))
 
@@ -92,12 +107,12 @@ inventario_children = (
         "Productos",
         reverse_lazy("producto_list"),
         weight=10,
-        icon="fa-list"),
+        icon="fa-cube"),
     ViewMenuItem(
         "Activos fijos",
         reverse_lazy("activofijo_list"),
         weight=5,
-        icon="fa-list"))
+        icon="fa-desktop"))
 
 Menu.add_item(
     "user",

@@ -38,8 +38,8 @@ class FacturaCompraDetailView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(FacturaCompraDetailView, self).get_context_data(**kwargs)
         if not self.object.completa:
-            context['detalle_form'] = FacturaCompraDetalleForm(initial={
-            'factura': self.object})
+            context['detalle_form'] = FacturaCompraDetalleForm(
+                initial={'factura': self.object})
         context['completa_form'] = FacturaCompraCompletaForm(
             instance=self.object,
             initial={'completa': True})
@@ -47,8 +47,8 @@ class FacturaCompraDetailView(LoginRequiredMixin, DetailView):
         if self.object.completa:
             # Si la factura ya está completa, envía el formulario de pago
             context['cheque_form'] = PagoForm(
-                monto_maximo = self.object.saldo,
-                fecha_minima = self.object.fecha_emision,
+                monto_maximo=self.object.saldo,
+                fecha_minima=self.object.fecha_emision,
                 initial={'factura': self.object})
         return context
 
@@ -78,3 +78,13 @@ class PagoCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save()
         self.object.pagos.create(factura=form.cleaned_data['factura'])
         return super(PagoCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        if self.object.pagos.first().factura.pagada:
+            return reverse_lazy('home')
+        else:
+            return self.object.pagos.first().factura.get_absolute_url()
+
+
+class FacturaCompraListView(ListView):
+    model = FacturaCompra

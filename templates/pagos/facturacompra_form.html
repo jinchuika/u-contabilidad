@@ -1,19 +1,39 @@
 {% extends "base/base.html" %}
+{% load widget_tweaks %}
+
+{% block page_title %}
+<title>Nueva compra</title>
+{% endblock page_title %}
 
 {% block content_header %}
-<h1>Factura</h1>
+<h1>Nueva compra</h1>
 {% endblock content_header %}
 
 {% block content %}
 <div class="box box-primary">
 	<div class="box-header">
-		<h3 class="box-title">Información del proveedor</h3>
+		<h3 class="box-title">Información de la factura</h3>
 	</div>
+
 	<div class="box-body table-responsive">
+		{% if form.non_field_errors %}
+		<div class="alert alert-danger alert-dismissible">
+			<h4><i class="icon fa fa-ban"></i> Alerta</h4>
+			{{ form.non_field_errors }}
+		</div>
+		{% endif %}
 		<form action="{{ action }}" method="post">
 			{% csrf_token %}
 			<table class="table">
-				{{ form.as_table }}
+				{% for field in form %}
+				<tr>
+					<td>{{ field.label_tag }}</td>
+					<td>
+						{{ field|add_class:"form-control" }}
+						{{ field.errors }}
+					</td>
+				</tr>
+				{% endfor %}
 				<tr>
 					<td colspan="2"><input type="submit" value="Guardar" class="btn btn-primary"></td>
 				</tr>

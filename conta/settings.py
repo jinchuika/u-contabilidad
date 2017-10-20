@@ -13,7 +13,7 @@ SECRET_KEY = '@2_z57+a^ek2#t1^9$+=2_a#&)+@-*b^q%krbgj2#*ig)(i)lw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'contabilidad',
     'menu',
     'widget_tweaks',
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +73,7 @@ WSGI_APPLICATION = 'conta.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db_dev.sqlite3'),
     }
 }
 

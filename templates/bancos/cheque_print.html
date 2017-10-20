@@ -1,0 +1,70 @@
+{% extends "base/base_print.html" %}
+
+{% block content %}
+<div class="box box-primary box-solid">
+	<div class="box-body">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>
+					<small class="pull-right">Cheque No. {{ cheque.numero }}</small>
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-3"></div>
+			<div class="col-xs-9">
+				<h5>{{ cheque.chequera.cuenta.titular }}</h5>
+				<h5>{{ cheque.chequera.cuenta.numero }}</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-xs-2">
+				<h5>Lugar y fecha:</h5>
+			</div>
+			<div class="col-md-7 col-xs-7">
+				<h4>
+					Guatemala, {{ cheque.fecha }}
+				</h4>
+			</div>
+			<div class="col-md-1 col-xs-1">
+				<h4 class="pull-right">Q</h4>
+			</div>
+			<div class="col-md-2 col-xs-2">
+				<h4>
+					{{ cheque.monto }}
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-xs-2">
+				<h5>Pago a la orden de:</h5>
+			</div>
+			<div class="col-md-9 col-xs-9">
+				<h4>
+					{{ cheque.nombre }}
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2 col-xs-2">
+				<h5>Suma de:</h5>
+			</div>
+			<div class="col-md-9 col-xs-9">
+				<h4>
+					{{ cheque.monto_en_letras }} quetzales
+				</h4>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-xs-6"></div>
+			<div class="col-md-6 col-xs-6">
+				<h5 class="page-header"></h5>
+				Firma(s) autorizada(s)
+			</div>
+		</div>
+	</div>
+</div>
+<section class="invoice">
+	
+</section>
+{% endblock content %}

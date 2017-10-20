@@ -1,3 +1,4 @@
+from num2words import num2words
 from django.db import models
 from django.urls import reverse_lazy
 
@@ -5,12 +6,12 @@ from django.urls import reverse_lazy
 class Banco(models.Model):
 
     """Banco para generar cuentas bancarias
-    
+
     Attributes:
         activo (bool): Indica que puedan realizarse operaciones
         nombre (str): Nombre para identificar al banco
     """
-    
+
     nombre = models.CharField(max_length=128)
     activo = models.BooleanField(blank=True)
 
@@ -90,15 +91,13 @@ class CuentaBanco(models.Model):
     def saldo(self):
         return self.credito - self.debito
 
+    def estado(self):
+        debitos = Cheque.objects.filter(chequera__cuenta=self).order_by('fecha').extra(select = {'tipo': 1}).values('fecha', 'monto', 'tipo')
+        creditos = self.depositos.all().order_by('fecha').extra(select = {'tipo': 2}).values('fecha', 'monto', 'tipo')
+        lista = list(debitos) + list(creditos)
+        print(lista)
+        return lista
 
-class ChequeraManager(models.Manager):
-    def get_queryset(self):
-        no_disponibles = []
-        queryset = super().get_queryset()
-        for chequera in queryset:
-            if chequera.cheques_disponibles <= 0:
-                no_disponibles.append(chequera.id)
-        return queryset.exclude(id__in=no_disponibles)
 
 class Chequera(models.Model):
 
@@ -113,9 +112,6 @@ class Chequera(models.Model):
     cuenta = models.ForeignKey(CuentaBanco, related_name='chequeras')
     numero = models.CharField(max_length=20)
     cantidad_cheques = models.IntegerField(default=1)
-
-    objects = models.Manager()
-    disponibles = ChequeraManager()
 
     class Meta:
         verbose_name = "Chequera"
@@ -163,6 +159,12 @@ class Cheque(models.Model):
             numero=self.numero,
             cuenta=self.chequera.cuenta)
 
+    def monto_en_letras(self):
+        return num2words(self.monto, lang='es').capitalize()
+
+    def get_print_url(self):
+        return reverse_lazy('cheque_print', kwargs={'pk': self.id})
+
 
 class DepositoBanco(models.Model):
 
@@ -188,3 +190,9 @@ class DepositoBanco(models.Model):
         return '{fecha} - {cuenta}'.format(
             fecha=self.fecha,
             cuenta=self.cuenta.numero)
+
+    def get_absolute_url(self):
+        return reverse_lazy('deposito_detail', kwargs={'pk': self.id})
+
+    def get_print_url(self):
+        return reverse_lazy('deposito_print', kwargs={'pk': self.id})
