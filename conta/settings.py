@@ -122,3 +122,4 @@ STATICFILES_DIRS = [
 DOCS_ROOT = 'docs/_build/html/'
 
 LOGIN_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/'

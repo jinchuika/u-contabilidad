@@ -9,5 +9,8 @@ urlpatterns = [
 
     url(r'^porpagar/$', contabilidad_views.FacturaPendienteListView.as_view(), name='cuentas_por_pagar'),
 
+    url(r'^user/add/$', contabilidad_views.UserCreateVIew.as_view(), name='user_add'),
+    url(r'^user/$', contabilidad_views.UserListView.as_view(), name='user_list'),
+
     url(r'^$', contabilidad_views.HomeView.as_view(), name='home'),
 ]
