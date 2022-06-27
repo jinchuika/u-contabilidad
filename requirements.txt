@@ -29,7 +29,7 @@ Pygments==2.2.0
 pytz==2017.2
 PyYAML==3.12
 recommonmark==0.4.0
-reportlab==3.4.0
+reportlab==3.5.55
 requests==2.18.4
 rinoh-typeface-dejavuserif==0.1.1
 rinoh-typeface-texgyrecursor==0.1.1
